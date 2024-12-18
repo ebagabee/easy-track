@@ -1,5 +1,3 @@
 # Angular Fundamentals
 
-## Steps
-
-1. Creating a header component
+- $event variable is not just available when working with custom events! it can also be used on built-in-events (like "click) to get hold of potentially emitted values

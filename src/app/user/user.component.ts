@@ -1,4 +1,11 @@
-import { Component, computed, input, Input } from '@angular/core';
+import {
+  Component,
+  computed,
+  EventEmitter,
+  input,
+  Input,
+  Output,
+} from '@angular/core';
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -7,20 +14,17 @@ import { Component, computed, input, Input } from '@angular/core';
   styleUrl: './user.component.css',
 })
 export class UserComponent {
+  @Input({ required: true }) id!: string;
   @Input({ required: true }) avatar!: string;
   @Input({ required: true }) name!: string;
+
+  @Output() select = new EventEmitter();
 
   get imagePath() {
     return 'assets/users/' + this.avatar;
   }
 
-  // Using Signals
-
-  // public readonly avatar = input<string>();
-  // public readonly name = input<string>();
-  // public readonly imagePath = computed(() => 'assets/users/' + this.avatar());
-
   onSelectUser() {
-    // TODO
+    this.select.emit({ id: this.id, name: this.name });
   }
 }
